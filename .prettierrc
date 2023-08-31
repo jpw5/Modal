@@ -1,16 +1,11 @@
-def find_value_between_colons(line):
-    start = line.find(':') + 1
-    end = line.find(':', start)
-    if start != -1 and end != -1:
-        return line[start:end]
-    return None
-
 user_input = input("Enter a value: ")
 
 with open('your_text_file.txt', 'r') as file:
     for line in file:
         if user_input in line:
-            value = find_value_between_colons(line)
-            if value:
+            start = line.find(':') + 1
+            end = line.find(':', start)
+            if start != -1 and end != -1:
+                value = line[start:end]
                 print("Found:", value)
                 break
