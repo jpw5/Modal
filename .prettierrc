@@ -1,4 +1,12 @@
-{
-  "singleQuote": true,
-  "arrowParens": "avoid"
-}
+def update_file(source_filename, target_filename):
+    with open(source_filename, 'r') as source_file:
+        source_content = source_file.read()
+
+    with open(target_filename, 'w') as target_file:
+        target_file.write(source_content)
+
+# Provide the filenames of the source and target files
+source_filename = 'source.txt'
+target_filename = 'target.txt'
+
+update_file(source_filename, target_filename)
