@@ -1,96 +1,34 @@
-with open(f'App Files/Master_Lookup 2.txt', 'r') as file:
-    lines = file.readlines()
-    for line in lines:
-        plaza_ids.append(line.split(':')[0])
+grab a user input and read text file and then compare and if a match then grab the email address on the line and save to a variable. allow for blank lines.
 
-with open(f'App Files/Lane_Types 2.txt', 'r') as file:
-    lane_types = [line.strip() for line in file]
-
-with open(f'App Files/Problem 2.txt', 'r') as file:
-    problems = [line.strip() for line in file]
-
-with open(f'App Files/Tech_List 2.txt', 'r') as file:
-    tech_names = ['' if line.strip() == '*************' else line.strip() for line in file]
-techs_sorted = sorted(tech_names, key=lambda x: (not x, x.split()[0] if x else ""))
-techs_sorted.insert(0, '')
-
-with open(f'App Files/CL_TechPhones 2.txt', 'r') as file:
-    names = [line.split(';')[0].strip() for line in file.readlines()]
-sorted_names = sorted(names, key=lambda name: name.split()[0])
-
-with open(f'App Files/ICA_Reason 2.txt', 'r') as file:
-    reasons = [line.strip() for line in file]
-
-reasons_sorted = sorted(reasons, key=lambda x: x.split()[0])
-
-with open(f'App Files/ICA_Units 2.txt', 'r') as file:
-    units = [line.strip() for line in file]
-
-units_sorted = sorted(units, key=lambda x: x.split()[0])
-
-with open(f'App Files/ADM 2.txt', 'r') as file:
-    adm_bom = [line.strip() for line in file]
-
-adm_bom_sorted = sorted(adm_bom, key=lambda x: x.split()[0])
-adm_bom_sorted.insert(0, '')
-
-with open(f'App Files/COAPM 2.txt', 'r') as file:
-    coapm_bom = [line.strip() for line in file]
-
-coapm_bom_sorted = sorted(coapm_bom, key=lambda x: x.split()[0])
-
-with open(f'App Files/DED 2.txt', 'r') as file:
-    ded_bom = [line.strip() for line in file]
-
-ded_bom_sorted = sorted(ded_bom, key=lambda x: x.split()[0])
-
-with open(f'App Files/MB 2.txt', 'r') as file:
-    mb_bom = [line.strip() for line in file]
-
-mb_bom_sorted = sorted(mb_bom, key=lambda x: x.split()[0])
-
-with open(f'App Files/ME 2.txt', 'r') as file:
-    me_bom = [line.strip() for line in file]
-
-me_bom_sorted = sorted(me_bom, key=lambda x: x.split()[0])
-
-with open(f'App Files/MX 2.txt', 'r') as file:
-    mx_bom = [line.strip() for line in file]
-
-mx_bom_sorted = sorted(mx_bom, key=lambda x: x.split()[0])
-
-with open(f'App Files/ORT 2.txt', 'r') as file:
-    ort_bom = [line.strip() for line in file]
-
-ort_bom_sorted = sorted(ort_bom, key=lambda x: x.split()[0])
-
-with open(f'App Files/ZFO_Dist 2.txt', 'r') as file:
-    for line in file:
-        # Check if "Region:" or "All Regions" is in the line
-        if "Region:" in line or "All Regions:" in line:
-            # Split line on ":" and get the first part (the city, region name, or "All Regions" together)
-            region_name = line.split(":")[0].strip()
-            regions.append(region_name)
-
-with open(f'App Files/ZFO_Dist 2.txt', 'r') as file:
-    for line in file:
-        # Check if "Region:" is in the line
-        if "Region:" in line:
-            # Split line on "Region:" and get the first part (the region name)
-            region_name = line.split("Region:")[0].strip()
-            city_regions.append(region_name)
-region_sorted = sorted(city_regions, key=lambda x: x.split()[0])
-
-with open(f'App Files/SCADA_Alarm 2.txt', 'r') as file:
-    scada = [line.strip() for line in file]
-
-scada_sorted = sorted(scada, key=lambda x: x.split()[0])
-
-database_filename = f'App Files/Master_Database 2.txt'
-with open(database_filename) as file:
-    PLAZA_IDS = json.load(file)
-
-
-def save():
-    with open(database_filename, 'w') as f:
-        json.dump(PLAZA_IDS, f, sort_keys=True, indent=4)
+Aaron Martin;5612534258;;;
+Abinash Sahoo;5617068822;;;
+Albert Forbes;954-444-8820;;Albert.Forbes@dot.state.fl.us
+Alberto Unzaga;954-444-9139;   -   -;alberto.unzaga@dot.state.fl.us
+Alex Woodard;4074678882;;;
+Alexander Woodard;407-927-7568;;
+Alexis Rodriguez;3212666884;;;
+Ali Walli;4075162674;;;
+Allan Crichlow;9543259764;;;
+Andre Taylor;4074678894;;;
+Andrew Wong;5615688438;;;
+Angel Ortiz;407-520-8902;407-264-3559;Angel.Ortiz@dot.state.fl.us
+Anthony Lawton;407-466-8837;;
+Anthony MacBride;407-466-4207;;
+Antonio Croissy;754-399-9131;;Antonio.Croissy@dot.state.fl.us
+Arcides Cruz;954-931-7370;   -   -;
+Arnab Mukhopadhyay;9546873959;;;
+Arsan Jawahir;9543257417;;;
+Art Dailey;5617622132;;;
+Arturo Chavez ;407-468-6717;;
+Ashish Mehta;2538864438;;;
+Ashmed Santiago;8139179063;;;
+Barrington Cox;407-921-3773;;
+Barry Kissel;850-814-0020;;
+Barry Morris;813-917-0612;   -   -;Barry.Morris@dot.state.fl.us
+Bashir Fadl;5614005474;;;
+Benny Thein;5617970091;;;
+Berge Ashchian;9544442537;;;
+Berger Group;8889383047;;;
+Bernie Moralis;8132990197;;;
+Bill Rosbury;5617191902;;;
+Brandon Rodriguez;754-757-6120;561-488-5387;Brandon.Rodriguez@dot.state.fl.us
