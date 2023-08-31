@@ -1,34 +1,16 @@
-grab a user input and read text file and then compare and if a match then grab the email address on the line and save to a variable. allow for blank lines.
+user_input = input("Enter a name: ")
 
-Aaron Martin;5612534258;;;
-Abinash Sahoo;5617068822;;;
-Albert Forbes;954-444-8820;;Albert.Forbes@dot.state.fl.us
-Alberto Unzaga;954-444-9139;   -   -;alberto.unzaga@dot.state.fl.us
-Alex Woodard;4074678882;;;
-Alexander Woodard;407-927-7568;;
-Alexis Rodriguez;3212666884;;;
-Ali Walli;4075162674;;;
-Allan Crichlow;9543259764;;;
-Andre Taylor;4074678894;;;
-Andrew Wong;5615688438;;;
-Angel Ortiz;407-520-8902;407-264-3559;Angel.Ortiz@dot.state.fl.us
-Anthony Lawton;407-466-8837;;
-Anthony MacBride;407-466-4207;;
-Antonio Croissy;754-399-9131;;Antonio.Croissy@dot.state.fl.us
-Arcides Cruz;954-931-7370;   -   -;
-Arnab Mukhopadhyay;9546873959;;;
-Arsan Jawahir;9543257417;;;
-Art Dailey;5617622132;;;
-Arturo Chavez ;407-468-6717;;
-Ashish Mehta;2538864438;;;
-Ashmed Santiago;8139179063;;;
-Barrington Cox;407-921-3773;;
-Barry Kissel;850-814-0020;;
-Barry Morris;813-917-0612;   -   -;Barry.Morris@dot.state.fl.us
-Bashir Fadl;5614005474;;;
-Benny Thein;5617970091;;;
-Berge Ashchian;9544442537;;;
-Berger Group;8889383047;;;
-Bernie Moralis;8132990197;;;
-Bill Rosbury;5617191902;;;
-Brandon Rodriguez;754-757-6120;561-488-5387;Brandon.Rodriguez@dot.state.fl.us
+email_address = None
+
+with open('your_text_file.txt', 'r') as file:
+    for line in file:
+        if user_input.lower() in line.lower():
+            columns = line.split(';')
+            if len(columns) >= 4:  # Check if the line has enough columns
+                email_address = columns[3].strip()
+                break
+
+if email_address:
+    print("Email Address:", email_address)
+else:
+    print("No match found or email address not available.")
