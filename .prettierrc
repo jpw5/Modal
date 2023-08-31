@@ -1,11 +1,96 @@
-user_input = input("Enter a value: ")
+with open(f'App Files/Master_Lookup 2.txt', 'r') as file:
+    lines = file.readlines()
+    for line in lines:
+        plaza_ids.append(line.split(':')[0])
 
-with open('your_text_file.txt', 'r') as file:
+with open(f'App Files/Lane_Types 2.txt', 'r') as file:
+    lane_types = [line.strip() for line in file]
+
+with open(f'App Files/Problem 2.txt', 'r') as file:
+    problems = [line.strip() for line in file]
+
+with open(f'App Files/Tech_List 2.txt', 'r') as file:
+    tech_names = ['' if line.strip() == '*************' else line.strip() for line in file]
+techs_sorted = sorted(tech_names, key=lambda x: (not x, x.split()[0] if x else ""))
+techs_sorted.insert(0, '')
+
+with open(f'App Files/CL_TechPhones 2.txt', 'r') as file:
+    names = [line.split(';')[0].strip() for line in file.readlines()]
+sorted_names = sorted(names, key=lambda name: name.split()[0])
+
+with open(f'App Files/ICA_Reason 2.txt', 'r') as file:
+    reasons = [line.strip() for line in file]
+
+reasons_sorted = sorted(reasons, key=lambda x: x.split()[0])
+
+with open(f'App Files/ICA_Units 2.txt', 'r') as file:
+    units = [line.strip() for line in file]
+
+units_sorted = sorted(units, key=lambda x: x.split()[0])
+
+with open(f'App Files/ADM 2.txt', 'r') as file:
+    adm_bom = [line.strip() for line in file]
+
+adm_bom_sorted = sorted(adm_bom, key=lambda x: x.split()[0])
+adm_bom_sorted.insert(0, '')
+
+with open(f'App Files/COAPM 2.txt', 'r') as file:
+    coapm_bom = [line.strip() for line in file]
+
+coapm_bom_sorted = sorted(coapm_bom, key=lambda x: x.split()[0])
+
+with open(f'App Files/DED 2.txt', 'r') as file:
+    ded_bom = [line.strip() for line in file]
+
+ded_bom_sorted = sorted(ded_bom, key=lambda x: x.split()[0])
+
+with open(f'App Files/MB 2.txt', 'r') as file:
+    mb_bom = [line.strip() for line in file]
+
+mb_bom_sorted = sorted(mb_bom, key=lambda x: x.split()[0])
+
+with open(f'App Files/ME 2.txt', 'r') as file:
+    me_bom = [line.strip() for line in file]
+
+me_bom_sorted = sorted(me_bom, key=lambda x: x.split()[0])
+
+with open(f'App Files/MX 2.txt', 'r') as file:
+    mx_bom = [line.strip() for line in file]
+
+mx_bom_sorted = sorted(mx_bom, key=lambda x: x.split()[0])
+
+with open(f'App Files/ORT 2.txt', 'r') as file:
+    ort_bom = [line.strip() for line in file]
+
+ort_bom_sorted = sorted(ort_bom, key=lambda x: x.split()[0])
+
+with open(f'App Files/ZFO_Dist 2.txt', 'r') as file:
     for line in file:
-        if user_input in line:
-            start = line.find(':') + 1
-            end = line.find(':', start)
-            if start != -1 and end != -1:
-                value = line[start:end]
-                print("Found:", value)
-                break
+        # Check if "Region:" or "All Regions" is in the line
+        if "Region:" in line or "All Regions:" in line:
+            # Split line on ":" and get the first part (the city, region name, or "All Regions" together)
+            region_name = line.split(":")[0].strip()
+            regions.append(region_name)
+
+with open(f'App Files/ZFO_Dist 2.txt', 'r') as file:
+    for line in file:
+        # Check if "Region:" is in the line
+        if "Region:" in line:
+            # Split line on "Region:" and get the first part (the region name)
+            region_name = line.split("Region:")[0].strip()
+            city_regions.append(region_name)
+region_sorted = sorted(city_regions, key=lambda x: x.split()[0])
+
+with open(f'App Files/SCADA_Alarm 2.txt', 'r') as file:
+    scada = [line.strip() for line in file]
+
+scada_sorted = sorted(scada, key=lambda x: x.split()[0])
+
+database_filename = f'App Files/Master_Database 2.txt'
+with open(database_filename) as file:
+    PLAZA_IDS = json.load(file)
+
+
+def save():
+    with open(database_filename, 'w') as f:
+        json.dump(PLAZA_IDS, f, sort_keys=True, indent=4)
