@@ -7,7 +7,7 @@ with open('your_text_file.txt', 'r') as file:
         if user_input.lower() in line.lower():
             columns = line.split(';')
             if len(columns) >= 2:  # Check if the line has enough columns
-                phone_number = columns[1].strip()
+                phone_number = columns[1].split()[0].strip()
                 break
 
 if phone_number:
