@@ -1,14 +1,34 @@
-def email(combobox_value):
-    email_entry.delete(0, tk.END)  # Clear the entry
+take the user input and read a text file and coompare. if it matches grab the phonr number and save into a phone number
 
-    if combobox_value:
-        with open('App Files/CL_TechPhones 2.txt', 'r') as file:
-            for line in file:
-                if combobox_value.lower() in line.lower():
-                    columns = line.split(';')
-                    if len(columns) >= 4:
-                        email_address = columns[3].strip()
-                        email_entry.insert(0, email_address)
-                        return
-
-        email_entry.insert(0, 'No email on file')
+101300 Bayway;727-893-2774
+101310 Bayway II;727-893-2774
+101320 Bayway IV;727-893-2774
+101400 Skyway North;727-893-2764
+101500 Skyway South;941-723-4525
+101800 Midbay;850-833-7562
+101810 Midbay Connector;850-833-7562
+101900 Garcon Point;850-983-5245
+11401 I-4 Connector-Central Tower;
+11402 I-4 Connector-Selmon WB to I-4 WB;
+11403 I-4 Connector-Port to I-4 EB;
+11404 I-4 Connector-Selmon EB to I-4 EB;
+11411 I-4 Connector-I-4 WB Selmon WB Port;
+11412 I-4 Connector-I-4 EB WB to Port;
+11413 I-4 Connector-I-4 EB to Selmon EB;
+1100 Oak Hammock;352-797-5850
+1200 Springhill;727-861-4876
+1211 CR 578;727-861-4876
+1221 Cortez Blvd;727-861-4876
+1300 Anclote;813-558-5407
+1321 SR 54;813-558-5407
+1331 Van Dyke Rd;813-558-5407
+1600 Eastern Barrier;863-968-5027
+1700 Central Barrier;863-284-4234
+1701 SR 540 East-West;863-284-4234
+1711 SR 540 North-South;863-284-4234
+1721 Lakeland Highlands;863-284-4234
+1731 CR 546;863-284-4234
+1800 Western Barrier;863-701-1257
+1821 South Florida Ave;863-701-1257
+1831 Harden Blvd;863-701-1257
+1841 Waring Rd;863-701-1257
